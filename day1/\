@@ -1,0 +1,12 @@
+use std::fs::read_to_string;
+
+fn main() {
+    let data = read_to_string("../input.txt")
+        .expect("Input file is not at expected location");
+
+    for item in data.split("\n") {
+        println!("{}", item)
+    }
+
+
+}
