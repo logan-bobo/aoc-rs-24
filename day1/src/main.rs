@@ -1,4 +1,3 @@
-use core::panic;
 use std::fs::read_to_string;
 
 fn main() {
@@ -21,7 +20,6 @@ fn main() {
 
         // We assume every location pair is always populated
         left_locations.push(split_locations[0]);
-
         right_locations.push(split_locations[1]);
     }
 
@@ -40,5 +38,25 @@ fn main() {
         }
     }
 
-    println!("{}", distance);
+    println!("Question One: {}", distance);
+
+    let mut locations_multiplied: Vec<usize> = Vec::new();
+
+    for left_item in &left_locations {
+        let mut left_count = 0;
+
+        for right_item in &right_locations {
+            if *left_item == *right_item {
+                left_count += 1;
+            }
+        }
+
+        if left_count > 0 {
+            locations_multiplied.push(left_item * left_count);
+        }
+    }
+
+    let total: usize = locations_multiplied.iter().sum();
+
+    println!("Question two: {}", total);
 }
